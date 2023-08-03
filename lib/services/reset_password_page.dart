@@ -24,7 +24,72 @@ class PasswordPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
-          children: const [],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Password TextField
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.redAccent),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  hintText: 'Ancien Mot de passe',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.redAccent),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  hintText: 'Nouveau Mot de passe',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(color: Colors.redAccent),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  hintText: 'Confirmer Mot de passe',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                ),
+              ),
+            ),
+            const SizedBox(height: 15),
+          ],
         ),
       ),
     );

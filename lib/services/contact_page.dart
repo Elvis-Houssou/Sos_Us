@@ -23,8 +23,99 @@ class ContactPage extends StatelessWidget {
         elevation: 0,
       ),
       body: SafeArea(
-        child: Column(
-          children: const [],
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                        child: GestureDetector(
+                          // onTap: signIn,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              border: BorderDirectional(
+                                bottom: BorderSide(
+                                  color: Colors.redAccent,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Contact de Confiance',
+                                style: TextStyle(
+                                  color: Colors.redAccent,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 0),
+                        child: GestureDetector(
+                          // onTap: () => const PremiumPage(),
+                          // onTap: () {
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => const PremiumPage(),
+                          //     ),
+                          //   );
+                          // },
+                          // onTap: signIn,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              border: BorderDirectional(
+                                bottom: BorderSide(
+                                  color: Colors.blueAccent,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                'Protégés',
+                                style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.0),
+                child: Text(
+                  'gratuit',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../menu/help_items.dart';
+
 class ObjectPage extends StatelessWidget {
   const ObjectPage({super.key});
 
@@ -24,7 +26,16 @@ class ObjectPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: Column(
-          children: const [],
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
+              child: HelpItem(
+                title: 'Details',
+                icon: Icons.quiz_rounded,
+              ),
+            ),
+          ],
         ),
       ),
     );

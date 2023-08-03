@@ -1,48 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:sos_us/services/premium_page.dart';
 
-class OffersPage extends StatelessWidget {
+class OffersPage extends StatefulWidget {
   const OffersPage({super.key});
 
   @override
+  State<OffersPage> createState() => _OffersPageState();
+}
+
+class _OffersPageState extends State<OffersPage> {
+  TabBar get _tabBar => const TabBar(
+        tabs: [
+          Tab(icon: Icon(Icons.flight)),
+          Tab(icon: Icon(Icons.directions_transit)),
+          Tab(icon: Icon(Icons.directions_car)),
+        ],
+      );
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50),
-          child: Text(
-            'Nos Ofrres',
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: const BackButton(color: Colors.blueAccent),
+          title: const Text(
+            'Nos Offres',
             style: TextStyle(
               color: Colors.blueAccent,
             ),
           ),
-        ),
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(
-          color: Colors.blueAccent,
-        ),
-        elevation: 0,
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 50,
+          elevation: 2,
+          shadowColor: Colors.blueAccent,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          bottom: PreferredSize(
+            preferredSize: _tabBar.preferredSize,
+            child: const Material(
+              child: TabBar(
+                labelColor: Colors.redAccent,
+                indicatorColor: Colors.redAccent, //<-- selected text color
+                unselectedLabelColor:
+                    Colors.blueAccent, //<-- Unselected text color
+                tabs: [
+                  Tab(
+                    text: 'Freemium',
+                  ),
+                  Tab(
+                    text: 'Premium ',
+                  ),
+                ],
+              ),
             ),
-            Row(
-              children: const [
-                Text(
-                  'Freemium',
-                  style: TextStyle(
-                    color: Colors.red,
-                  ),
-                ),
-                Text(
-                  'Premium',
-                  style: TextStyle(
-                    color: Colors.blueAccent,
-                  ),
-                )
-              ],
+          ),
+        ),
+        body: const TabBarView(
+          children: [
+            Center(
+              child: Text('Gratuit'),
+            ),
+            Center(
+              child: PremiumPage(),
             ),
           ],
         ),
