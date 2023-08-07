@@ -95,7 +95,7 @@ class SideMenu extends StatelessWidget {
               );
             },
             child: const MenuItem(
-              title: 'Contact de Confiance',
+              title: 'Contacts & Protégés',
               icon: Icons.contacts,
             ),
           ),

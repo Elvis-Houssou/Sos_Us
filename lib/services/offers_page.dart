@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sos_us/services/premium_page.dart';
+import 'package:sos_us/sous_services/premium_page.dart';
 
 class OffersPage extends StatefulWidget {
   const OffersPage({super.key});

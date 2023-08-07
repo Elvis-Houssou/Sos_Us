@@ -1,121 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:sos_us/sous_services/protected_contacts_page.dart';
+import 'package:sos_us/sous_services/trusted_contacts_page.dart';
 
-class ContactPage extends StatelessWidget {
+class ContactPage extends StatefulWidget {
   const ContactPage({super.key});
 
   @override
+  State<ContactPage> createState() => _ContactPageState();
+}
+
+class _ContactPageState extends State<ContactPage> {
+  TabBar get _tabBar => const TabBar(
+        tabs: [
+          Tab(icon: Icon(Icons.flight)),
+          Tab(icon: Icon(Icons.directions_transit)),
+          Tab(icon: Icon(Icons.directions_car)),
+        ],
+      );
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            'Contact & Protégés',
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: const BackButton(color: Colors.blueAccent),
+          title: const Text(
+            'Contacts & Protégés',
             style: TextStyle(
               color: Colors.blueAccent,
             ),
           ),
-        ),
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(
-          color: Colors.blueAccent,
-        ),
-        elevation: 0,
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 0),
-                        child: GestureDetector(
-                          // onTap: signIn,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              border: BorderDirectional(
-                                bottom: BorderSide(
-                                  color: Colors.redAccent,
-                                  width: 1,
-                                ),
-                              ),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Contact de Confiance',
-                                style: TextStyle(
-                                  color: Colors.redAccent,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 0),
-                        child: GestureDetector(
-                          // onTap: () => const PremiumPage(),
-                          // onTap: () {
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => const PremiumPage(),
-                          //     ),
-                          //   );
-                          // },
-                          // onTap: signIn,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              border: BorderDirectional(
-                                bottom: BorderSide(
-                                  color: Colors.blueAccent,
-                                  width: 1,
-                                ),
-                              ),
-                            ),
-                            child: const Center(
-                              child: Text(
-                                'Protégés',
-                                style: TextStyle(
-                                  color: Colors.blueAccent,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.0),
-                child: Text(
-                  'gratuit',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
+          elevation: 2,
+          shadowColor: Colors.blueAccent,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          bottom: PreferredSize(
+            preferredSize: _tabBar.preferredSize,
+            child: const Material(
+              child: TabBar(
+                labelColor: Colors.redAccent,
+                indicatorColor: Colors.redAccent, //<-- selected text color
+                unselectedLabelColor:
+                    Colors.blueAccent, //<-- Unselected text color
+                tabs: [
+                  Tab(
+                    text: 'Contacts de confiance',
                   ),
-                ),
+                  Tab(
+                    text: 'Protégés ',
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
+        ),
+        body: const TabBarView(
+          children: [
+            Center(
+              child: TrustedContactsPage(),
+            ),
+            Center(
+              child: ProtectedContactsPage(),
+            ),
+          ],
         ),
       ),
     );
