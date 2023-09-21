@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sos_us/alert/risk_area_page.dart';
 
 class FeaturesPage extends StatelessWidget {
   const FeaturesPage({super.key});
@@ -38,7 +39,10 @@ class FeaturesPage extends StatelessWidget {
           left: 50,
           child: ElevatedButton(
             onPressed: () {
-              // Action du deuxième bouton
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const RiskAreaPage()),
+              );
             },
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),

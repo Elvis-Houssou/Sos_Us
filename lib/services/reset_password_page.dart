@@ -89,6 +89,35 @@ class PasswordPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 15),
+
+            // validate Button
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: GestureDetector(
+                child: Container(
+                  margin: const EdgeInsets.all(50),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.redAccent,
+                    borderRadius: BorderRadius.circular(50),
+                    gradient: const LinearGradient(colors: [
+                      Color(0xff9796F0),
+                      Color(0xffFBC7D4),
+                    ]),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Valider',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
