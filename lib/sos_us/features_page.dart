@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sos_us/alert/risk_area_page.dart';
+import 'package:sos_us/alert/woman_alert_page.dart';
 
 class FeaturesPage extends StatelessWidget {
   const FeaturesPage({super.key});
@@ -48,7 +49,7 @@ class FeaturesPage extends StatelessWidget {
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(40),
               backgroundColor: Colors.white,
-              foregroundColor: Colors.redAccent,
+              elevation: 0,
               side: const BorderSide(
                 width: 1.0,
                 color: Colors.grey,
@@ -75,7 +76,7 @@ class FeaturesPage extends StatelessWidget {
               shape: const CircleBorder(),
               padding: const EdgeInsets.all(30),
               backgroundColor: Colors.white,
-              foregroundColor: Colors.redAccent,
+              elevation: 0,
               side: const BorderSide(
                 width: 1.0,
                 color: Colors.grey,
@@ -121,7 +122,10 @@ class FeaturesPage extends StatelessWidget {
           right: 0,
           child: ElevatedButton(
             onPressed: () {
-              // Action du troisième bouton
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const WomanAlert()),
+              );
             },
             style: ElevatedButton.styleFrom(
               shape: const CircleBorder(),

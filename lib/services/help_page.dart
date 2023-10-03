@@ -81,7 +81,7 @@ class HelpPage extends StatelessWidget {
                     },
                     child: const HelpItem(
                       title: "Conditions & Confidentialité",
-                      icon: Icons.file_open,
+                      icon: Icons.file_copy,
                     ),
                   ),
                   GestureDetector(

@@ -1,9 +1,10 @@
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sos_us/image%20alert/image_area.dart';
+import 'package:sos_us/location/location_zone.dart';
+import 'package:sos_us/sos_us/layout_page.dart';
 
 class RiskAreaPage extends StatefulWidget {
   const RiskAreaPage({super.key});
@@ -45,15 +46,19 @@ class _RiskAreaPageState extends State<RiskAreaPage> {
         child: Center(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Description',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.black,
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Text(
+                    'Description',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 25),
+                const SizedBox(height: 15),
 
                 // Description
                 Padding(
@@ -74,39 +79,31 @@ class _RiskAreaPageState extends State<RiskAreaPage> {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 25),
 
-                //localisation
-                const Text(
-                  'Zone',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                const Divider(
+                  height: 4,
+                  thickness: 0.8,
+                  color: Colors.grey,
                 ),
 
                 const SizedBox(height: 15),
                 // Premium Button
+
                 //Email textfield
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.blueAccent),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.redAccent),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      fillColor: Colors.grey[200],
-                      filled: true,
-                    ),
-                  ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.0),
+                  child: SearchLocation(),
                 ),
+
+                const Divider(
+                  height: 4,
+                  thickness: 0.8,
+                  color: Colors.grey,
+                ),
+
                 const SizedBox(height: 15),
+
                 Stack(
                   children: [
                     _image != null
@@ -155,6 +152,38 @@ class _RiskAreaPageState extends State<RiskAreaPage> {
                   ],
                 ),
                 const SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    height: 44.0,
+                    width: double.maxFinite,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xff9796F0),
+                          Color(0xffFBC7D4),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LayoutScreen(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          shadowColor: Colors.transparent),
+                      child: const Text('Valider'),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

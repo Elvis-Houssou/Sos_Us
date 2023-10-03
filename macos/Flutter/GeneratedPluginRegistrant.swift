@@ -12,6 +12,7 @@ import firebase_core
 import firebase_storage
 import geolocator_apple
 import location
+import package_info_plus
 import path_provider_foundation
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
@@ -22,5 +23,6 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   FLTFirebaseStoragePlugin.register(with: registry.registrar(forPlugin: "FLTFirebaseStoragePlugin"))
   GeolocatorPlugin.register(with: registry.registrar(forPlugin: "GeolocatorPlugin"))
   LocationPlugin.register(with: registry.registrar(forPlugin: "LocationPlugin"))
+  FLTPackageInfoPlusPlugin.register(with: registry.registrar(forPlugin: "FLTPackageInfoPlusPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
 }

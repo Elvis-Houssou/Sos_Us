@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../menu/help_items.dart';
-
 class ObjectPage extends StatelessWidget {
   const ObjectPage({super.key});
 
@@ -27,13 +25,91 @@ class ObjectPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
-              child: HelpItem(
-                title: 'Details',
-                icon: Icons.quiz_rounded,
-              ),
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Row(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Expanded(
+                          child: Icon(
+                            Icons.watch,
+                            color: Colors.redAccent,
+                            size: 65,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: const ButtonStyle(),
+                          child: const Text('Details'),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: const ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.redAccent),
+                          ),
+                          child: const Text('Deconnexion'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Row(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Expanded(
+                          child: Icon(
+                            Icons.radio_button_checked,
+                            color: Colors.redAccent,
+                            size: 65,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: const ButtonStyle(),
+                          child: const Text('Details'),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15.0),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: const ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(Colors.redAccent),
+                          ),
+                          child: const Text('Deconnexion'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
