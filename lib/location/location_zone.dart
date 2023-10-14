@@ -40,7 +40,7 @@ class _SearchLocationState extends State<SearchLocation> {
       List<Placemark> placemarks =
           await placemarkFromCoordinates(latitude, longitude);
       Placemark place = placemarks[0];
-      return "${place.street}, ${place.locality}, ${place.postalCode}, ${place.country}";
+      return "${place.subLocality} ${place.street}, ${place.locality}, ${place.country}";
     } catch (e) {
       print("Erreur lors de la récupération de l'adresse: $e");
       return "Adresse introuvable";
@@ -66,8 +66,7 @@ class _SearchLocationState extends State<SearchLocation> {
                   String address = await _getAddressFromCoordinates(lat, long);
 
                   setState(() {
-                    locationMessage =
-                        'Latitude: $lat , Longitude: $long\nAdresse: $address';
+                    locationMessage = 'Adresse: $address';
                   });
                 });
               },

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sos_us/services/alert_page.dart';
@@ -10,12 +11,40 @@ import 'package:sos_us/services/reset_password_page.dart';
 // import 'package:menu/menu_items.dart';
 
 import 'menu_items.dart';
+
 // import 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
+class FirestoreService {
+  static final FirestoreService _instance = FirestoreService._internal();
+
+  factory FirestoreService() {
+    return _instance;
+  }
+
+  FirestoreService._internal();
+
+  Future<String> getUserFirstName() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('users').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        var firstDocument = querySnapshot.docs[0];
+        return firstDocument['first name'];
+      } else {
+        return 'Nom introuvable';
+      }
+    } catch (e) {
+      print('Erreur lors de la récupération des données : $e');
+      return 'Erreur';
+    }
+  }
+}
 
 class SideMenu extends StatelessWidget {
   SideMenu({super.key});
 
   final user = FirebaseAuth.instance.currentUser!;
+  final firestoreService = FirestoreService();
 
   @override
   Widget build(BuildContext context) {
@@ -46,25 +75,53 @@ class SideMenu extends StatelessWidget {
           ),
           Row(
             children: [
-              const CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 45,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.black,
-                  size: 50,
+              const Padding(
+                padding: EdgeInsets.only(right: 10.0),
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  radius: 45,
+                  child: Icon(
+                    Icons.person,
+                    color: Colors.black,
+                    size: 50,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
-              Expanded(
-                child: Text(
-                  ' Elvis \n ${user.email!}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              FutureBuilder<String>(
+                future: firestoreService.getUserFirstName(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Erreur : ${snapshot.error}');
+                  } else {
+                    String firstName = snapshot.data ?? 'Nom introuvable';
+                    return Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            firstName,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            user.email ?? '',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                },
               ),
             ],
           ),
