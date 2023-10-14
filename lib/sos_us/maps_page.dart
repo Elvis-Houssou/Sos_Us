@@ -21,13 +21,22 @@ class MapSampleState extends State<MapSample> {
   LocationData? currentLocation;
 
   void getCurrentLocation() async {
+    // Location location = Location();
+
+    // location.getLocation().then(
+    //   (location) {
+    //     currentLocation = location;
+    //   },
+    // );
+
     Location location = Location();
 
-    location.getLocation().then(
-      (location) {
-        currentLocation = location;
-      },
-    );
+    try {
+      currentLocation = await location.getLocation();
+    } catch (e) {
+      // Gérer les erreurs liées à la récupération de la position
+      print("Erreur lors de la récupération de la position : $e");
+    }
 
     GoogleMapController googleMapController = await _controller.future;
 
